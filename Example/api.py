@@ -20,12 +20,13 @@ def hello():
 
     return jsonify(result)
 
-
+# Receive POST JSON DATA FROM POSTMAN
+# INSERT TO MongoDB study Database Hello_World Collection
 @app.route("/api/insert", methods=['POST'])
 def insert_db():
     if request.headers['Content-Type'] != 'application/json':
         print(request.headers['Content-Type'])
-        return jsonify(res='error'), 400
+        return jsonify(res='error')
     else:
         print(Mongo_URL)
         client = pymongo.MongoClient(Mongo_URL)
